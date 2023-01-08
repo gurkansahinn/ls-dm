@@ -21,7 +21,7 @@ export class Dialog {
     dialogInfo: string,
     dialogButtons: string[],
     dialogListItems?: string[],
-    dialogInput?: string[],
+    dialogInput?: string,
     dialogPasswordInput?: string) {
     const buttons: string = "[" + dialogButtons.map((button) => `"${button}"`).join(",") + "]";
     const listItems: string = dialogListItems ? "[" + dialogListItems.map((item) => `"${item}"`).join(",") + "]" : "[]";

@@ -5,7 +5,6 @@
 			"../../node_modules/@ragempcommunity/types-client",
 			"./@types"
 		],
-		"baseUrl": "./",
 		"paths": {
 			"@shared/*": [
 				"../shared/*"
@@ -14,7 +13,9 @@
 	},
 	"include": [
 		"./**/*.ts",
-		"../shared/**/*.ts"
+		"../shared/**/*.ts",
+		"chat/chat.ts",
+		"../server/domain/deathmatch/deathmatchLobby.ts"
 	],
 	"exclude": [
 		"../shared/**/*.d.ts"

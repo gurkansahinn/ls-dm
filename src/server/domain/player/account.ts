@@ -3,3 +3,7 @@ export interface Account {
   name: string;
   password: string;
 }
+
+export function validateAccount(player: PlayerMp): boolean {
+  return player.account !== undefined;
+}

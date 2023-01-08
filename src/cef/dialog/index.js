@@ -42,12 +42,12 @@ function createDialog(name, caption, info, buttons, list_items, text_input, pass
 			}
 			list_items_str += "</ul></div>";
 		}
-		if (text_input != "" || password_input) {
+		if (text_input != "" || password_input != "") {
 			inputs_str = "<div id='input'>";
 			if (text_input != "") {
 				inputs_str += "<input id='text_input' type='text' placeholder='" + text_input + "'/>";
 			}
-			if (password_input != "") {
+			if (password_input.length > 0) {
 				inputs_str += "<input id='password_input' type='password' placeholder='" + password_input + "'/>";
 			}
 			inputs_str += "</div>";

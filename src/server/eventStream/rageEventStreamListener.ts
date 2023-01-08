@@ -5,16 +5,21 @@ import { inject, injectable } from "tsyringe";
 import { PlayerContext } from "../domain/playerContext";
 import { EventStreamListener } from "./eventStreamListener";
 import crypto from "crypto";
+import { ChatContext } from "../domain/chat/chatContext";
 
 @injectable()
 export class RageEventStreamListener implements EventStreamListener {
   private readonly playerContext: PlayerContext;
+  private readonly chatContext: ChatContext;
 
-  constructor(@inject(PlayerContext) playerContext: PlayerContext) {
+  constructor(@inject(PlayerContext) playerContext: PlayerContext, @inject(ChatContext) chatContext: ChatContext) {
     this.playerContext = playerContext;
+    this.chatContext = chatContext;
 
     mp.events.addProc(PlayerEvents.Login, this.playerLogin.bind(this));
     mp.events.addProc(PlayerEvents.Register, this.playerRegister.bind(this));
+
+    mp.events.add(PlayerEvents.Chat, this.playerChat.bind(this));
   }
 
   async playerLogin(player: PlayerMp, name: string, password: string): Promise<LoginResponse> {
@@ -49,5 +54,9 @@ export class RageEventStreamListener implements EventStreamListener {
 
       return { success: false, message: "Bilinmeyen bir hata oluştu." };
     }
+  }
+
+  playerChat(player: PlayerMp, message: string): void {
+    this.chatContext.sendAllMessage(player, message);
   }
 }

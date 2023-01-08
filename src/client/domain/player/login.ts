@@ -1,5 +1,5 @@
-import { EventStreamEmitter } from "eventStream/eventStreamEmitter";
-import { ServiceIdentify } from "serviceIdentify";
+import { EventStreamEmitter } from "../../eventStream/eventStreamEmitter";
+import { ServiceIdentify } from "../../serviceIdentify";
 import { inject, injectable } from "tsyringe";
 import { Dialog, DialogResponse } from "../../dialog/dialog";
 
